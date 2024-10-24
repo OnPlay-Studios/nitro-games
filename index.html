@@ -16,6 +16,8 @@ text-align: center;
 header {
 background-color: darkorange;
 padding: 20px;
+border-radius: 15px 15px 0 0; /* zaoblené horné rohy */
+box-shadow: 0 0 10px 5px #ff6f00;
 }
 h1 {
 margin: 0;
@@ -31,17 +33,52 @@ nav a:hover {
 text-decoration: underline;
 }
 main {
+background-color: rgba(0, 0, 0, 0.7); /* transparentné čierne pozadie */
 padding: 20px;
+border-radius: 0 0 15px 15px; /* zaoblené spodné rohy */
+box-shadow: 0 0 10px 5px #ff6f00;
+margin: 20px;
 }
 footer {
 background-color: darkorange;
 padding: 10px;
+border-radius: 0 0 15px 15px; /* zaoblené dolné rohy */
+box-shadow: 0 0 10px 5px #ff6f00;
 position: fixed;
 width: 100%;
 bottom: 0;
 }
 footer p {
 margin: 0;
+}
+.decorations {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none; /* dekorácie nezasahujú do interakcie */
+}
+.decorations img {
+position: absolute;
+}
+.decorations .pumpkin {
+top: 30px;
+left: 30px;
+width: 60px;
+height: 60px;
+}
+.decorations .spider {
+top: 30px;
+right: 30px;
+width: 50px;
+height: 50px;
+}
+.decorations .bat {
+bottom: 30px;
+left: 30px;
+width: 70px;
+height: 70px;
 }
 </style>
 </head>
@@ -59,7 +96,13 @@ margin: 0;
 <p>Vyber si jednu z hier z menu hore a začni sa baviť!</p>
 </main>
 <footer>
-<p>&copy; 2024 Tvoja Halloween Stránka</p>
+<p>&copy; 2024 Empega Studios Všetky Práva Vyhradené</p>
 </footer>
+<div class="decorations">
+<img src="https://pngimg.com/uploads/pumpkin/pumpkin_PNG86734.png" alt="Pumpkin" class="pumpkin">
+[7:07 PM]
+<img src="https://clipart-library.com/images_k/spider-transparent/spider-transparent-13.png" alt="Spider" class="spider">
+<img src="https://www.bing.com/images/search?view=detailV2&ccid=SyRl2nl%2b&id=9C2C87C65698465B8F542DBD1E4B6D1C86E923F1&thid=OIP.SyRl2nl-TBwNJ-iYRa5nRQHaE3&mediaurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.4b2465da797e4c1c0d27e89845ae6745%3frik%3d8SPphhxtSx69LQ%26riu%3dhttp%253a%252f%252fwww.pngall.com%252fwp-content%252fuploads%252f2016%252f06%252fBat-Download-PNG.png%26ehk%3d5ZarN%252bSPLkpCDSQ3EeRMLzVBRY5lvdUwJR8D4ADndHI%253d%26risl%3d%26pid%3dImgRaw%26r%3d0%26sres%3d1%26sresct%3d1%26srh%3d799%26srw%3d1217&exph=387&expw=589&q=transparent+bat+png&simid=608052088789623812&FORM=IRPRST&ck=74C2534DB5BD652DECF6379F6AC812C3&selectedIndex=6&itb=1" alt="Bat" class="bat">
+</div>
 </body>
 </html>
