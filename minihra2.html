@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Střílení Těpvíc</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: url('background.jpg') no-repeat center center / cover;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const pumpkins = [];
+        const scoreEl = document.createElement('div');
+        document.body.appendChild(scoreEl);
+        scoreEl.style.position = 'absolute';
+        scoreEl.style.top = '10px';
+        scoreEl.style.left = '10px';
+        scoreEl.style.color = 'white';
+        scoreEl.style.fontSize = '24px';
+
+        let score = 0;
+
+        class Pumpkin {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                this.size = 20;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            update() {
+                this.y += 2;
+                this.draw();
+            }
+
+            isClicked(mx, my) {
+                return Math.hypot(mx - this.x, my - this.y) < this.size;
+            }
+        }
+
+        function spawnPumpkins() {
+            const x = Math.random() * canvas.width;
+            const y = -20;
+            const color = Math.random() < 0.5 ? 'red' : 'orange';
+            pumpkins.push(new Pumpkin(x, y, color));
+        }
+
+        function animate() {
+[10:41 AM]
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            pumpkins.forEach((pumpkin, index) => {
+                pumpkin.update();
+                if (pumpkin.y > canvas.height) {
+                    pumpkins.splice(index, 1);
+                }
+            });
+            requestAnimationFrame(animate);
+        }
+
+        setInterval(spawnPumpkins, 1000);
+        animate();
+
+        canvas.addEventListener('click', (e) => {
+            const { clientX, clientY } = e;
+            pumpkins.forEach((pumpkin, index) => {
+                if (pumpkin.isClicked(clientX, clientY)) {
+                    if (pumpkin.color === 'red') {
+                        score++;
+                    } else {
+                        score--;
+                    }
+                    pumpkins.splice(index, 1);
+                }
+            });
+            scoreEl.textContent = `Score: ${score}`;
+        });
+    </script>
+</body>
+</html>
