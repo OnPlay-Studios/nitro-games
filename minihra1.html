@@ -1,63 +1,59 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-<title>Nitro Games Halloween Event!</title>
+<title>Nitro Games Halloween 2024!!</title>
 <style>
-/* ... (predchádzajúce štýly zachované) ... */
+body {
+margin: 0;
+background: url(' no-repeat center center fixed;
+background-size: cover;
+overflow: hidden;
+}
+.container {
+position: absolute;
+top: 10%;
+left: 10%;
+width: 80%;
+height: 80vh;
+border: 5px solid orange;
+border-radius: 15px;
+box-shadow: 0 0 20px 5px #ff6f00;
+}
+iframe {
+width: 100%;
+height: 100%;
+border: none;
+}
 #fullscreen-toggle {
 background: orange;
 color: white;
 padding: 10px;
 position: fixed;
-bottom: 0;
-right: 0;
+bottom: 10px;
+right: 10px;
 cursor: pointer;
-display: none; /* Skryť tlačidlo pokiaľ nie je v režime celého obrazovky */
-z-index: 1000; /* Zaistiť, že tlačidlo je nad ostatnými elementmi */
+z-index: 1000;
+display: block;
 }
-/* ... ďalšie štýly ... */
 </style>
 </head>
 <body>
+<div class="container">
 <iframe id="game-frame" src="https://eaglercraft.com/mc/1.8.8/"></iframe>
-<div id="fullscreen-toggle" onclick="toggleFullscreen()">Exit Fullscreen</div>
+</div>
+<div id="fullscreen-toggle" onclick="toggleFullscreen()">Fullscreen</div>
 <script>
-// Skript na prepínanie režimu celého obrazovky
 function toggleFullscreen() {
-if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-(!document.mozFullScreen && !document.webkitIsFullScreen)) {
-if (document.documentElement.requestFullScreen) {
-document.documentElement.requestFullScreen();
-} else if (document.documentElement.mozRequestFullScreen) {
-document.documentElement.mozRequestFullScreen();
-} else if (document.documentElement.webkitRequestFullScreen) {
-document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-}
-document.getElementById('fullscreen-toggle').style.display = 'block';
+if (!document.fullscreenElement) {
+document.documentElement.requestFullscreen().catch(err => {
+alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+});
 } else {
-if (document.cancelFullScreen) {
-document.cancelFullScreen();
-} else if (document.mozCancelFullScreen) {
-document.mozCancelFullScreen();
-} else if (document.webkitCancelFullScreen) {
-document.webkitCancelFullScreen();
-}
-document.getElementById('fullscreen-toggle').style.display = 'none';
+document.exitFullscreen();
 }
 }
-
-// Zobraziť tlačidlo Exit Fullscreen keď je myš nad iframe v režime celého obrazovky
-document.getElementById('game-frame').addEventListener('mouseenter', function() {
-if (window.innerHeight == screen.height) {
-document.getElementById('fullscreen-toggle').style.display = 'block';
-}
-});
-
-// Skryť tlačidlo Exit Fullscreen keď myš opustí oblasť tlačidla
-document.getElementById('fullscreen-toggle').addEventListener('mouseleave', function() {
-document.getElementById('fullscreen-toggle').style.display = 'none';
-});
 </script>
 </body>
 </html>
