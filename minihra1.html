@@ -2,30 +2,93 @@
 <html lang="cs">
 <head>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1140338917395536"
-     crossorigin="anonymous"></script>
+crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>Externá Halloweenska Stránka</title>
 <style>
 body {
-  margin: 0;
-  overflow: hidden;
-  background: url('https://files.shapes.inc/86b08abf.png') no-repeat center center fixed; 
-  background-size: cover;
+margin: 0;
+overflow: hidden;
+background: url(' no-repeat center center fixed;
+background-size: cover;
+}
+.container {
+position: absolute;
+top: 10%;
+left: 10%;
+width: 80%;
+height: 80vh;
+border: 5px solid orange;
+border-radius: 15px;
+box-shadow: 0 0 20px 5px #ff6f00;
+background-color: rgba(0, 0, 0, 0.7); /* Transparentný čierny podklad */
+overflow: hidden;
 }
 iframe {
-  width: 80%;
-  height: 80vh;
-  border: 5px solid orange; /* oranžový rámik okolo iframe */
-  border-radius: 15px; /* zaoblené rohy */
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  box-shadow: 0 0 20px 5px #ff6f00; /* tieň pre strašidelný efekt */
+width: 100%;
+height: 100%;
+border: none;
+border-radius: 15px; /* Zaoblené rohy iframe */
+}
+#back-button {
+background: darkorange;
+color: white;
+padding: 10px 20px;
+position: absolute;
+bottom: 20px;
+left: 50%;
+transform: translateX(-50%);
+border: none;
+border-radius: 10px;
+cursor: pointer;
+box-shadow: 0 0 10px 5px #ff6f00;
+font-size: 1em;
+text-decoration: none;
+z-index: 1000;
+}
+#back-button:hover {
+background: orangered;
+}
+.decorations {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none; /* dekorácie nezasahujú do interakcie */
+}
+.decorations img {
+position: absolute;
+}
+.decorations .pumpkin {
+top: 10px;
+left: 10px;
+width: 50px;
+height: 50px;
+}
+.decorations .spider {
+top: 10px;
+right: 10px;
+width: 40px;
+height: 40px;
+}
+.decorations .bat {
+bottom: 10px;
+left: 10px;
+width: 60px;
+height: 60px;
 }
 </style>
 </head>
 <body>
-<iframe src="https://eaglercraft.org//" allow="fullscreen" allowtransparency="true" style="pointer-events: auto;"></iframe>
+<div class="container">
+<iframe src="eaglercraft.html" allow="fullscreen" allowtransparency="true" style="pointer-events: auto;"></iframe>
+</div>
 <a href="index.html" id="back-button">Späť na domácu stránku</a>
+<div class="decorations">
+<img src="https://pngimg.com/uploads/pumpkin/pumpkin_PNG86734.png" alt="Pumpkin" class="pumpkin"/>
+<img src="https://clipart-library.com/images_k/spider-transparent/spider-transparent-13.png" alt="Spider" class="spider"/>
+<img src="https://static.wixstatic.com/media/2cd43b_3c8af9e11db3459fba811284ae1821cf~mv2.png/v1/fill/w_320,h_357,fp_0.50_0.50/2cd43b_3c8af9e11db3459fba811284ae1821cf~mv2.png" alt="Bat" class="bat"/>
+</div>
 </body>
 </html>
