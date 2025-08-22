@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-  <meta charset="utf-8" />
-  <title>Minecraft 1.12.2</title>
+  <meta charset="utf-8">
+  <title>Minecraft 1.8.8 – UniLand</title>
   <script>
-    const gameData = {
-      title: "Minecraft 1.12.2",
-      description: "Minecraft V prehliadači aj z multiplayerom!",
+    const params = new URLSearchParams({
+      title: "Minecraft 1.8.8",
+      description: "Legendárna sandbox hra – Eaglercraft verzia v prehliadači.",
       emoji: "⛏️",
-      iframe: "https://eaglercraft.com/mc/1.12.2-wasm/"
-    };
-    localStorage.setItem("gameData", JSON.stringify(gameData));
-    window.location.href = "/game.html";
+      iframe: "/eaglercraft.html"
+    });
+    window.location.href = "game.html?" + params.toString();
   </script>
 </head>
+<body>
+  <p>Redirecting to Minecraft…</p>
+</body>
 </html>
