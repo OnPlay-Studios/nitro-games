@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-  <meta charset="utf-8" />
-  <title>1v1.LOL</title>
+  <meta charset="utf-8">
+  <title>1v1.LOL – UniLand</title>
   <script>
-    const gameData = {
+    const params = new URLSearchParams({
       title: "1v1.LOL",
       description: "Stavaj, bojuj a vyhraj v tejto taktickej online aréne.",
       emoji: "⚔️",
       iframe: "https://1v1.lol/"
-    };
-    localStorage.setItem("gameData", JSON.stringify(gameData));
-    window.location.href = "/game.html";
+    });
+    window.location.href = "game.html?" + params.toString();
   </script>
 </head>
+<body>
+  <p>Redirecting to 1v1.LOL…</p>
+</body>
 </html>
