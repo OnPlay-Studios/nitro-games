@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-  <meta charset="utf-8" />
-  <title>LEGO Workshop</title>
+  <meta charset="utf-8">
+  <title>LEGO Workshop – UniLand</title>
   <script>
-    const gameData = {
+    const params = new URLSearchParams({
       title: "LEGO Workshop",
       description: "Tvor si vlastné LEGO modely online v Mecabricks workshope.",
       emoji: "🧱",
       iframe: "https://mecabricks.com/en/workshop"
-    };
-    localStorage.setItem("gameData", JSON.stringify(gameData));
-    window.location.href = "/game.html";
+    });
+    window.location.href = "game.html?" + params.toString();
   </script>
 </head>
+<body>
+  <p>Redirecting to LEGO Workshop…</p>
+</body>
 </html>
