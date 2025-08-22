@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-  <meta charset="utf-8" />
-  <title>Subway Surfers</title>
+  <meta charset="utf-8">
+  <title>Subway Surfers – UniLand</title>
   <script>
-    const gameData = {
+    const params = new URLSearchParams({
       title: "Subway Surfers",
       description: "Bež, uhýbaj sa a zbieraj mince v populárnej endless-runner hre.",
       emoji: "🏃",
       iframe: "https://subwaysurfersgame.io/subway-surfers-game.embed?d=20241024"
-    };
-    localStorage.setItem("gameData", JSON.stringify(gameData));
-    window.location.href = "/game.html";
+    });
+    window.location.href = "game.html?" + params.toString();
   </script>
 </head>
+<body>
+  <p>Redirecting to Subway Surfers…</p>
+</body>
 </html>
