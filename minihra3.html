@@ -1,31 +1,17 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="sk">
 <head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1140338917395536"
-     crossorigin="anonymous"></script>
-<meta charset="UTF-8">
-<title>Externá Halloweenska Stránka</title>
-<style>
-body {
-  margin: 0;
-  overflow: hidden;
-  background: url('https://files.shapes.inc/86b08abf.png') no-repeat center center fixed; 
-  background-size: cover;
-}
-iframe {
-  width: 80%;
-  height: 80vh;
-  border: 5px solid orange; /* oranžový rámik okolo iframe */
-  border-radius: 15px; /* zaoblené rohy */
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  box-shadow: 0 0 20px 5px #ff6f00; /* tieň pre strašidelný efekt */
-}
-</style>
+  <meta charset="utf-8" />
+  <title>1v1.LOL</title>
+  <script>
+    const gameData = {
+      title: "1v1.LOL",
+      description: "Stavaj, bojuj a vyhraj v tejto taktickej online aréne.",
+      emoji: "⚔️",
+      iframe: "https://1v1.lol/"
+    };
+    localStorage.setItem("gameData", JSON.stringify(gameData));
+    window.location.href = "/game.html";
+  </script>
 </head>
-<body>
-<iframe src="https://1v1.lol/" allow="fullscreen" allowtransparency="true" style="pointer-events: auto;"></iframe>
-<a href="index.html" id="back-button">Späť na domácu stránku</a>
-</body>
 </html>
