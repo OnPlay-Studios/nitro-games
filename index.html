@@ -1,109 +1,274 @@
 <!DOCTYPE html>
-<html lang="cs">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Qantogame</title>
-<style>
-body {
-background: url('https://png.pngtree.com/background/20231030/original/pngtree-3d-illustration-of-a-winter-wonderland-picture-image_5782087.jpg') no-repeat center center fixed;
-color: white;
-font-family: 'Arial', sans-serif;
-margin: 0;
-padding: 0;
-text-align: center;
-}
-header {
-background-color: white;
-padding: 20px;
-border-radius: 15px 15px 0 0; /* zaoblené horné rohy */
-box-shadow: 0 0 10px 5px #ff6f00;
-}
-h1 {
-margin: 0;
-font-size: 3em;
-}
-nav a {
-color: black;
-margin: 0 15px;
-text-decoration: none;
-font-size: 1.2em;
-}
-nav a:hover {
-text-decoration: underline;
-}
-main {
-background-color: rgba(0, 0, 0, 0.7); /* transparentné čierne pozadie */
-padding: 20px;
-border-radius: 0 0 15px 15px; /* zaoblené spodné rohy */
-box-shadow: 0 0 10px 5px #ff6f00;
-margin: 20px;
-}
-footer {
-background-color: black;
-padding: 10px;
-border-radius: 0 0 15px 15px; /* zaoblené dolné rohy */
-box-shadow: 0 0 10px 5px #ff6f00;
-position: fixed;
-width: 100%;
-bottom: 0;
-}
-footer p {
-margin: 0;
-}
-.decorations {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-pointer-events: none; /* dekorácie nezasahujú do interakcie */
-}
-.decorations img {
-position: absolute;
-}
-.decorations .pumpkin {
-top: 30px;
-left: 30px;
-width: 60px;
-height: 60px;
-}
-.decorations .spider {
-top: 30px;
-right: 30px;
-width: 50px;
-height: 50px;
-}
-.decorations .bat {
-bottom: 30px;
-left: 30px;
-width: 70px;
-height: 70px;
-}
-</style>
-</head>
-<body>
-<header>
-<h1>Minihry</h1>
-<nav>
-<a href="minihra1.html">Minecraft 1.8.8</a>
-<a href="minihra2.html">Subway Surfers</a>
-<a href="minihra3.html">1v1.Lol</a>
-<a href="minihra4.html">Lego</a>
-<a href="kks-co-kukas-more.html">Herné Novinky (Novinka)</a>
-</nav>
-</header>
-<main>
-<h2>Vitajte na stránke plnej minihier!</h2>
-<p>Vyber si jednu z hier z menu hore a začni sa baviť!</p>
-</main>
-<footer>
-<p>&copy; 2024 Empega Studios Všetky Práva Vyhradené</p>
-</footer>
-<div class="decorations">
-<img src="https://downloadscdn6.freepik.com/181624/24/23423.jpg?filename=illustration-snowman-with-red-gloves-hat-scarf-isolated-white-background.jpg&token=exp=1733378492~hmac=3bc4c3dbef7b8a216cdc670aee60a463&filename=23423.jpg" class="pumpkin">
-<img src="blob:https://kr.pinterest.com/dd380ec5-45b7-4cb2-89c9-4e42186f31eb" alt="Spider" class="spider">
-<img src="https://static.wixstatic.com/media/2cd43b_3c8af9e11db3459fba811284ae1821cf~mv2.png/v1/fill/w_320,h_357,fp_0.50_0.50/2cd43b_3c8af9e11db3459fba811284ae1821cf~mv2.png" alt="Bat" class="bat">
-</div>
-</body>
+<html lang="sk" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UniLand — Minihry a Herné Novinky</title>
+    <meta name="description" content="Vitaj na UniLand.fun — stránke plnej minihier a herných noviniek. Zahraj si Minecraft 1.8.8, Subway Surfers, 1v1.LOL, LEGO a sleduj novinky." />
+    <meta name="theme-color" content="#0ea5e9" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Cantarell", "Helvetica Neue", "Arial", "sans-serif"] },
+            boxShadow: {
+              soft: "0 10px 30px rgba(2, 6, 23, 0.15)",
+            },
+            backgroundImage: {
+              hero: "radial-gradient(1000px 400px at 50% -10%, rgba(59,130,246,0.25), rgba(59,130,246,0) 60%), radial-gradient(700px 300px at 90% 10%, rgba(14,165,233,0.25), rgba(14,165,233,0) 60%), radial-gradient(800px 400px at 10% 10%, rgba(99,102,241,0.25), rgba(99,102,241,0) 60%)",
+            },
+          }
+        },
+        darkMode: 'class'
+      }
+    </script>
+    <style>
+      .glass { backdrop-filter: blur(12px); background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.5)); }
+      .dark .glass { background: linear-gradient(180deg, rgba(2,6,23,.55), rgba(2,6,23,.45)); }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 border-b border-slate-200/60 dark:border-slate-700/60 bg-white/70 dark:bg-slate-900/70 backdrop-blur">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-sky-400 to-indigo-500 grid place-content-center shadow-soft">
+            <span class="text-white text-lg font-extrabold">U</span>
+          </div>
+          <div>
+            <div class="text-lg font-extrabold leading-5">UniLand</div>
+            <div class="text-[11px] uppercase tracking-wider text-slate-500 dark:text-slate-400">Minihry</div>
+          </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="#hry" class="hover:text-sky-600 dark:hover:text-sky-400">Hry</a>
+          <a href="#novinky" class="hover:text-sky-600 dark:hover:text-sky-400">Herné novinky</a>
+          <a href="#faq" class="hover:text-sky-600 dark:hover:text-sky-400">FAQ</a>
+          <a href="#kontakt" class="hover:text-sky-600 dark:hover:text-sky-400">Kontakt</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <button id="themeToggle" aria-label="Prepni tému" class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
+            <svg id="sun" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v2m0 14v2M5.64 5.64l1.41 1.41M16.95 16.95l1.41 1.41M3 12h2m14 0h2M5.64 18.36l1.41-1.41M16.95 7.05l1.41-1.41"/><circle cx="12" cy="12" r="4"/></svg>
+            <svg id="moon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <a href="#hry" class="hidden sm:inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold bg-sky-500 hover:bg-sky-600 text-white shadow-soft">
+            Začať hrať
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="bg-hero">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div class="glass rounded-3xl p-8 sm:p-12 shadow-soft">
+          <div class="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
+                Vitaj na stránke plnej <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-indigo-500">minihier</span>!
+              </h1>
+              <p class="mt-4 text-slate-600 dark:text-slate-300 text-lg">Vyber si jednu z hier nižšie a začni sa baviť. Všetko beží priamo v prehliadači.</p>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a href="#hry" class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold bg-sky-500 hover:bg-sky-600 text-white shadow-soft">Prejsť na hry</a>
+                <a href="#novinky" class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800">Pozrieť novinky</a>
+              </div>
+              <div class="mt-6 flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
+                <div class="flex items-center gap-1">💻 Funguje na PC aj mobile</div>
+                <div class="flex items-center gap-1">🕹️ Žiadna inštalácia</div>
+              </div>
+            </div>
+            <div class="md:justify-self-end">
+              <div class="relative">
+                <div class="absolute -inset-4 rounded-3xl blur-xl opacity-40 bg-gradient-to-tr from-sky-400 to-indigo-500"></div>
+                <div class="relative rounded-3xl border border-slate-200/70 dark:border-slate-700/70 bg-white/70 dark:bg-slate-900/70 p-6 md:p-8 shadow-soft">
+                  <div class="grid grid-cols-2 gap-4 text-center">
+                    <div class="rounded-2xl p-5 border border-slate-200 dark:border-slate-700">
+                      <div class="text-3xl">⛏️</div>
+                      <div class="mt-2 font-semibold">Minecraft 1.8.8</div>
+                      <a href="/minihra1.html" class="mt-3 inline-block text-xs font-semibold text-sky-600 dark:text-sky-400 hover:underline">Hrať →</a>
+                    </div>
+                    <div class="rounded-2xl p-5 border border-slate-200 dark:border-slate-700">
+                      <div class="text-3xl">🏃</div>
+                      <div class="mt-2 font-semibold">Subway Surfers</div>
+                      <a href="/minihra2.html" class="mt-3 inline-block text-xs font-semibold text-sky-600 dark:text-sky-400 hover:underline">Hrať →</a>
+                    </div>
+                    <div class="rounded-2xl p-5 border border-slate-200 dark:border-slate-700">
+                      <div class="text-3xl">⚔️</div>
+                      <div class="mt-2 font-semibold">1v1.LOL</div>
+                      <a href="/minihra3.html" class="mt-3 inline-block text-xs font-semibold text-sky-600 dark:text-sky-400 hover:underline">Hrať →</a>
+                    </div>
+                    <div class="rounded-2xl p-5 border border-slate-200 dark:border-slate-700">
+                      <div class="text-3xl">🧱</div>
+                      <div class="mt-2 font-semibold">LEGO</div>
+                      <a href="/minihra4.html" class="mt-3 inline-block text-xs font-semibold text-sky-600 dark:text-sky-400 hover:underline">Hrať →</a>
+                    </div>
+                  </div>
+                  <div class="mt-5 text-center text-xs text-slate-500 dark:text-slate-400">Viac hier už čoskoro.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hry -->
+    <section id="hry" class="py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between gap-4">
+          <h2 class="text-2xl sm:text-3xl font-extrabold">Hry</h2>
+          <div class="text-sm text-slate-500 dark:text-slate-400">Klikni na hru a hraj hneď</div>
+        </div>
+        <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Game Card component -->
+          <a href="/minihra1.html" class="group rounded-3xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5 hover:shadow-soft transition-shadow">
+            <div class="text-4xl">⛏️</div>
+            <div class="mt-3 font-semibold text-lg">Minecraft 1.8.8</div>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Klasika pre kreatívnych staviteľov.</p>
+            <div class="mt-4 inline-flex items-center text-sky-600 dark:text-sky-400 text-sm font-semibold">Hrať <span class="ml-1">→</span></div>
+          </a>
+
+          <a href="/minihra2.html" class="group rounded-3xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5 hover:shadow-soft transition-shadow">
+            <div class="text-4xl">🏃</div>
+            <div class="mt-3 font-semibold text-lg">Subway Surfers</div>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Utekaj, uhýbaj sa, zbieraj mince.</p>
+            <div class="mt-4 inline-flex items-center text-sky-600 dark:text-sky-400 text-sm font-semibold">Hrať <span class="ml-1">→</span></div>
+          </a>
+
+          <a href="/minihra3.html" class="group rounded-3xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5 hover:shadow-soft transition-shadow">
+            <div class="text-4xl">⚔️</div>
+            <div class="mt-3 font-semibold text-lg">1v1.LOL</div>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Rýchly battle arena duel.</p>
+            <div class="mt-4 inline-flex items-center text-sky-600 dark:text-sky-400 text-sm font-semibold">Hrať <span class="ml-1">→</span></div>
+          </a>
+
+          <a href="/minihra4.html" class="group rounded-3xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5 hover:shadow-soft transition-shadow">
+            <div class="text-4xl">🧱</div>
+            <div class="mt-3 font-semibold text-lg">LEGO</div>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Stavaj a rieš hádanky.</p>
+            <div class="mt-4 inline-flex items-center text-sky-600 dark:text-sky-400 text-sm font-semibold">Hrať <span class="ml-1">→</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Novinky -->
+    <section id="novinky" class="py-16 bg-slate-100/60 dark:bg-slate-800/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between gap-4">
+          <h2 class="text-2xl sm:text-3xl font-extrabold">Herné novinky</h2>
+          <a href="/kks-co-kukas-more.html" class="text-sm font-semibold text-sky-600 dark:text-sky-400 hover:underline">Zobraziť všetko</a>
+        </div>
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          <article class="rounded-3xl p-6 border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70">
+            <div class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Aktualita</div>
+            <h3 class="mt-2 font-semibold text-lg">Nový dizajn UniLand</h3>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Stránka dostala rýchly, moderný a prehľadný vzhľad. Daj nám vedieť, čo si o ňom myslíš!</p>
+            <div class="mt-3 text-xs text-slate-500 dark:text-slate-400">Dnes</div>
+          </article>
+          <article class="rounded-3xl p-6 border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70">
+            <div class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Tip</div>
+            <h3 class="mt-2 font-semibold text-lg">Hraj aj na mobile</h3>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Všetky minihry sú responzívne a fungujú v prehliadači bez inštalácie.</p>
+            <div class="mt-3 text-xs text-slate-500 dark:text-slate-400">Stále aktuálne</div>
+          </article>
+          <article class="rounded-3xl p-6 border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70">
+            <div class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Plán</div>
+            <h3 class="mt-2 font-semibold text-lg">Viac hier čoskoro</h3>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Pridáme nové tituly a vylepšený filter podľa žánru.</p>
+            <div class="mt-3 text-xs text-slate-500 dark:text-slate-400">Už čoskoro</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-16">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-extrabold">FAQ</h2>
+        <div class="mt-8 space-y-6">
+          <details class="rounded-2xl border border-slate-200 dark:border-slate-700 p-5 bg-white/70 dark:bg-slate-900/70">
+            <summary class="font-semibold cursor-pointer">Je stránka bezpečná pre deti?</summary>
+            <p class="mt-3 text-slate-600 dark:text-slate-300">Áno, hry sa spúšťajú priamo na UniLand.fun alebo odkazujú na známe tituly. Odporúčame dohľad rodiča pri mladších hráčoch.</p>
+          </details>
+          <details class="rounded-2xl border border-slate-200 dark:border-slate-700 p-5 bg-white/70 dark:bg-slate-900/70">
+            <summary class="font-semibold cursor-pointer">Musím niečo inštalovať?</summary>
+            <p class="mt-3 text-slate-600 dark:text-slate-300">Nie, stačí webový prehliadač.</p>
+          </details>
+          <details class="rounded-2xl border border-slate-200 dark:border-slate-700 p-5 bg-white/70 dark:bg-slate-900/70">
+            <summary class="font-semibold cursor-pointer">Ako nahlásim problém?</summary>
+            <p class="mt-3 text-slate-600 dark:text-slate-300">Použi formulár nižšie alebo napíš na <a href="mailto:info@uniland.fun" class="text-sky-600 dark:text-sky-400 underline">info@uniland.fun</a>.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt" class="py-16 bg-slate-100/60 dark:bg-slate-800/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-8 items-start">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold">Kontakt</h2>
+            <p class="mt-3 text-slate-600 dark:text-slate-300">Máš nápad na hru alebo spätnú väzbu? Pošli nám správu.</p>
+            <ul class="mt-6 space-y-3 text-slate-600 dark:text-slate-300">
+              <li>✉️ <a class="underline text-sky-600 dark:text-sky-400" href="mailto:info@uniland.fun">info@uniland.fun</a></li>
+              <li>🎮 <a class="underline text-sky-600 dark:text-sky-400" href="/kks-co-kukas-more.html">Herné novinky & blog</a></li>
+            </ul>
+          </div>
+          <form class="rounded-3xl p-6 border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 shadow-soft" onsubmit="event.preventDefault(); alert('Ďakujeme! Tvoja správa bola odoslaná.'); this.reset();">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium">Meno</label>
+                <input type="text" required class="mt-1 w-full rounded-xl border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900/60 focus:ring-sky-500 focus:border-sky-500" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium">Email</label>
+                <input type="email" required class="mt-1 w-full rounded-xl border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900/60 focus:ring-sky-500 focus:border-sky-500" />
+              </div>
+            </div>
+            <div class="mt-4">
+              <label class="block text-sm font-medium">Správa</label>
+              <textarea required rows="4" class="mt-1 w-full rounded-xl border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900/60 focus:ring-sky-500 focus:border-sky-500"></textarea>
+            </div>
+            <button class="mt-5 inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold bg-sky-500 hover:bg-sky-600 text-white shadow-soft">Odoslať</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400">
+          <div>© <span id="year"></span> Empega Studios. Všetky práva vyhradené.</div>
+          <div class="flex items-center gap-4">
+            <a href="#faq" class="hover:underline">Podmienky</a>
+            <a href="#faq" class="hover:underline">Súkromie</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Theme toggle with localStorage
+      const themeToggle = document.getElementById('themeToggle');
+      const html = document.documentElement;
+      const stored = localStorage.getItem('uniland-theme');
+      if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+      }
+      themeToggle.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        localStorage.setItem('uniland-theme', html.classList.contains('dark') ? 'dark' : 'light');
+      });
+      // Footer year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>
+
