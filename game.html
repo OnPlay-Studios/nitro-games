@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="sk" class="scroll-smooth dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Načítavam hru… – UniLand</title>
+    <meta name="description" content="UniLand hra" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: { extend: { fontFamily: { sans: ["Inter","system-ui"] }, boxShadow: { soft: "0 10px 30px rgba(2,6,23,.15)" } } },
+        darkMode: 'class'
+      }
+    </script>
+  </head>
+  <body class="bg-slate-900 text-slate-100">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 border-b border-slate-700/60 bg-slate-900/70 backdrop-blur">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="/index.html" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-sky-400 to-indigo-500 grid place-content-center shadow-soft">
+            <span class="text-white text-lg font-extrabold">U</span>
+          </div>
+          <div>
+            <div class="text-lg font-extrabold leading-5">UniLand</div>
+            <div class="text-[11px] uppercase tracking-wider text-slate-400">Minihry</div>
+          </div>
+        </a>
+        <a href="/index.html#hry" class="rounded-xl px-3 py-2 text-sm font-semibold bg-sky-500 hover:bg-sky-600 text-white shadow-soft">Späť na hry</a>
+      </div>
+    </header>
+
+    <!-- Game Section -->
+    <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+      <div class="glass rounded-3xl p-6 md:p-10 shadow-soft text-center">
+        <div class="text-4xl" id="emoji">🎮</div>
+        <h1 class="mt-2 text-2xl sm:text-3xl font-extrabold" id="title">Načítavam…</h1>
+        <p class="mt-2 text-slate-300" id="description"></p>
+        <div class="mt-8 aspect-video w-full rounded-2xl overflow-hidden border border-slate-700 bg-black">
+          <iframe id="iframe" src="" class="w-full h-full" allowfullscreen></iframe>
+        </div>
+        <div class="mt-6 flex flex-wrap justify-center gap-3">
+          <button id="reloadBtn" class="rounded-xl px-4 py-2.5 text-sm font-semibold bg-sky-500 hover:bg-sky-600 text-white shadow-soft">Spustiť znova</button>
+          <a href="/index.html#hry" class="rounded-xl px-4 py-2.5 text-sm font-semibold border border-slate-700 hover:bg-slate-800">Späť na hry</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-400">
+        © <span id="year"></span> Empega Studios. Všetky práva vyhradené.
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const data = JSON.parse(localStorage.getItem("gameData") || "{}");
+      if (data.title) {
+        document.title = data.title + " – UniLand";
+        document.getElementById("title").textContent = data.title;
+        document.getElementById("description").textContent = data.description;
+        document.getElementById("emoji").textContent = data.emoji;
+        document.getElementById("iframe").src = data.iframe;
+        document.getElementById("reloadBtn").onclick = () => {
+          document.getElementById("iframe").src = data.iframe;
+        }
+      }
+    </script>
+  </body>
+</html>
