@@ -20,7 +20,7 @@
               soft: "0 10px 30px rgba(2, 6, 23, 0.15)",
             },
             backgroundImage: {
-              hero: "radial-gradient(1000px 400px at 50% -10%, rgba(59,130,246,0.25), rgba(59,130,246,0) 60%), radial-gradient(700px 300px at 90% 10%, rgba(14,165,233,0.25), rgba(14,165,233,0) 60%), r[...]
+              hero: "radial-gradient(1000px 400px at 50% -10%, rgba(59,130,246,0.25), rgba(59,130,246,0) 60%), radial-gradient(700px 300px at 90% 10%, rgba(14,165,233,0.25), rgba(14,165,233,0) 60%), radial-gradient(800px 400px at 10% 10%, rgba(99,102,241,0.25), rgba(99,102,241,0) 60%)",
             },
           }
         },
@@ -52,15 +52,9 @@
           <a href="#kontakt" class="hover:text-sky-600 dark:hover:text-sky-400">Kontakt</a>
         </nav>
         <div class="flex items-center gap-2">
-          <!-- Added login and dashboard buttons (Tailwind) -->
-          <div class="hidden sm:flex items-center gap-3">
-            <a href="/login.html" class="text-sm font-medium text-slate-700 dark:text-slate-300 hover:underline">Prihlásiť sa</a>
-            <a href="/dashboard.html" class="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold bg-sky-50 hover:bg-sky-100 text-sky-600 dark:bg-slate-800/60 dark:text-sky-400 border border-slate-200 dark:border-slate-700 shadow-sm">Dashboard</a>
-          </div>
-
           <button id="themeToggle" aria-label="Prepni tému" class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
-            <svg id="sun" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v2m0 14v2M5.64 5.64[...]
-            <svg id="moon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 [...]
+            <svg id="sun" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v2m0 14v2M5.64 5.64l1.41 1.41M16.95 16.95l1.41 1.41M3 12h2m14 0h2M5.64 18.36l1.41-1.41M16.95 7.05l1.41-1.41"/><circle cx="12" cy="12" r="4"/></svg>
+            <svg id="moon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           </button>
           <a href="#hry" class="hidden sm:inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold bg-sky-500 hover:bg-sky-600 text-white shadow-soft">
             Začať hrať
@@ -81,7 +75,7 @@
               <p class="mt-4 text-slate-600 dark:text-slate-300 text-lg">Vyber si jednu z hier nižšie a začni sa baviť. Všetko beží priamo v prehliadači.</p>
               <div class="mt-6 flex flex-wrap gap-3">
                 <a href="#hry" class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold bg-sky-500 hover:bg-sky-600 text-white shadow-soft">Prejsť na hry</a>
-                <a href="#novinky" class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slat[...]
+                <a href="#novinky" class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800">Pozrieť novinky</a>
               </div>
               <div class="mt-6 flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
                 <div class="flex items-center gap-1">💻 Funguje na PC aj mobile</div>
@@ -200,7 +194,7 @@
         <div class="mt-8 space-y-6">
           <details class="rounded-2xl border border-slate-200 dark:border-slate-700 p-5 bg-white/70 dark:bg-slate-900/70">
             <summary class="font-semibold cursor-pointer">Je stránka bezpečná pre deti?</summary>
-            <p class="mt-3 text-slate-600 dark:text-slate-300">Áno, hry sa spúšťajú priamo na UniLand.fun alebo odkazujú na známe tituly. Odporúčame dohľad rodiča pri mladších hráčoch.<[...]
+            <p class="mt-3 text-slate-600 dark:text-slate-300">Áno, hry sa spúšťajú priamo na UniLand.fun alebo odkazujú na známe tituly. Odporúčame dohľad rodiča pri mladších hráčoch.</p>
           </details>
           <details class="rounded-2xl border border-slate-200 dark:border-slate-700 p-5 bg-white/70 dark:bg-slate-900/70">
             <summary class="font-semibold cursor-pointer">Musím niečo inštalovať?</summary>
@@ -208,7 +202,7 @@
           </details>
           <details class="rounded-2xl border border-slate-200 dark:border-slate-700 p-5 bg-white/70 dark:bg-slate-900/70">
             <summary class="font-semibold cursor-pointer">Ako nahlásim problém?</summary>
-            <p class="mt-3 text-slate-600 dark:text-slate-300">Použi formulár nižšie alebo napíš na <a href="mailto:info@uniland.fun" class="text-sky-600 dark:text-sky-400 underline">info@unilan[...]
+            <p class="mt-3 text-slate-600 dark:text-slate-300">Použi formulár nižšie alebo napíš na <a href="mailto:info@uniland.fun" class="text-sky-600 dark:text-sky-400 underline">info@uniland.fun</a>.</p>
           </details>
         </div>
       </div>
@@ -226,7 +220,7 @@
               <li>🎮 <a class="underline text-sky-600 dark:text-sky-400" href="/kks-co-kukas-more.html">Herné novinky & blog</a></li>
             </ul>
           </div>
-          <form class="rounded-3xl p-6 border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 shadow-soft" onsubmit="event.preventDefault(); alert('Ďakujeme! Tvoja správa bol[...]
+          <form class="rounded-3xl p-6 border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 shadow-soft" onsubmit="event.preventDefault(); alert('Ďakujeme! Tvoja správa bola odoslaná.'); this.reset();">
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-medium">Meno</label>
