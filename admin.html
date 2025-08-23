@@ -1,83 +1,54 @@
-<!DOCTYPE html>
-<html lang="sk">
-<head>
-  <meta charset="UTF-8">
-  <title>Admin Panel – UniLand</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    // Firebase config
-    const firebaseConfig = {
-      apiKey: "AIzaSyD391ahoLbdhCEMzc73uTYz4rLl7aRuuHY",
-      authDomain: "unicord-e7296.firebaseapp.com",
-      projectId: "unicord-e7296",
-      storageBucket: "unicord-e7296.firebasestorage.app",
-      messagingSenderId: "150017945888",
-      appId: "1:150017945888:web:4929627b3c5bbdb1606745",
-      measurementId: "G-KDS54SZF0Y"
-    };
+  const firebaseConfig = { /* tvoje údaje */ };
 
-    // Init Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
 
-    // Kontrola loginu
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        window.location.href = "login.html";
-      } else {
-        document.getElementById("user").textContent = user.email;
+  const SUPER_ADMIN = "kertik_creative@outlook.sk";
+
+  // Kontrola loginu
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      window.location.href = "login.html";
+    } else {
+      if (user.email !== SUPER_ADMIN) {
+        alert("Nemáš prístup do admin panelu!");
+        window.location.href = "index.html";
       }
+      document.getElementById("user").textContent = user.email;
+    }
+  });
+
+  window.logout = function() {
+    signOut(auth).then(() => {
+      window.location.href = "login.html";
     });
+  }
 
-    // Logout
-    window.logout = function() {
-      signOut(auth).then(() => {
-        window.location.href = "login.html";
-      });
+  window.addGame = async function() {
+    const title = document.getElementById("title").value;
+    const description = document.getElementById("description").value;
+    const emoji = document.getElementById("emoji").value;
+    const iframe = document.getElementById("iframe").value;
+
+    await addDoc(collection(db, "games"), { title, description, emoji, iframe });
+    alert("Hra pridaná ✅");
+  }
+
+  // len superadmin môže pridávať adminov
+  window.addAdmin = async function() {
+    const email = prompt("Zadaj email nového admina:");
+    if (!email) return;
+    if (auth.currentUser.email !== SUPER_ADMIN) {
+      alert("Nemáš oprávnenie!");
+      return;
     }
-
-    // Pridanie hry
-    window.addGame = async function() {
-      const title = document.getElementById("title").value;
-      const description = document.getElementById("description").value;
-      const emoji = document.getElementById("emoji").value;
-      const iframe = document.getElementById("iframe").value;
-
-      try {
-        await addDoc(collection(db, "games"), {
-          title,
-          description,
-          emoji,
-          iframe
-        });
-        alert("Hra bola pridaná ✅");
-        document.getElementById("gameForm").reset();
-      } catch (e) {
-        alert("Chyba: " + e.message);
-      }
-    }
-  </script>
-</head>
-<body class="bg-black text-white min-h-screen flex items-center justify-center">
-  <div class="bg-gray-900 p-8 rounded-2xl shadow-lg w-[32rem]">
-    <h1 class="text-3xl font-bold mb-4">🎮 Admin Panel</h1>
-    <p class="mb-6">Prihlásený ako: <span id="user" class="text-purple-400">Načítavam…</span></p>
-
-    <form id="gameForm" class="space-y-3">
-      <input id="title" type="text" placeholder="Názov hry" class="w-full p-2 rounded bg-gray-800 text-white">
-      <input id="description" type="text" placeholder="Popis hry" class="w-full p-2 rounded bg-gray-800 text-white">
-      <input id="emoji" type="text" placeholder="Emoji 🎮" class="w-full p-2 rounded bg-gray-800 text-white">
-      <input id="iframe" type="text" placeholder="Iframe URL" class="w-full p-2 rounded bg-gray-800 text-white">
-      <button type="button" onclick="addGame()" class="w-full bg-blue-600 hover:bg-blue-700 p-2 rounded">Pridať hru</button>
-    </form>
-
-    <button onclick="logout()" class="w-full mt-6 bg-red-600 hover:bg-red-700 p-2 rounded">Odhlásiť</button>
-  </div>
-</body>
-</html>
-
+    await addDoc(collection(db, "admins"), { email });
+    alert("Admin pridaný ✅");
+  }
+</script>
