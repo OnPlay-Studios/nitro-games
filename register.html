@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrácia – UniLand</title>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD391ahoLbdhCEMzc73uTYz4rLl7aRuuHY",
+      authDomain: "unicord-e7296.firebaseapp.com",
+      projectId: "unicord-e7296",
+      storageBucket: "unicord-e7296.firebasestorage.app",
+      messagingSenderId: "150017945888",
+      appId: "1:150017945888:web:4929627b3c5bbdb1606745",
+      measurementId: "G-KDS54SZF0Y"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.register = function() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("Úspešná registrácia! Teraz sa môžeš prihlásiť.");
+          window.location.href = "login.html";
+        })
+        .catch(err => alert("Chyba: " + err.message));
+    }
+  </script>
+</head>
+<body>
+  <h1>Registrácia</h1>
+  <input id="email" type="email" placeholder="Email"><br>
+  <input id="password" type="password" placeholder="Heslo"><br>
+  <button onclick="register()">Registrovať</button>
+  <p>Máš účet? <a href="login.html">Prihlás sa</a></p>
+</body>
+</html>
 
