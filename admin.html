@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel – UniLand</title>
+  <script src="script.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white p-6">
+  <h1 class="text-2xl font-bold mb-4">🎮 Admin Panel</h1>
+
+  <form id="gameForm" class="space-y-3 max-w-md">
+    <input type="text" id="title" placeholder="Názov hry" class="w-full p-2 rounded text-black">
+    <input type="text" id="description" placeholder="Popis hry" class="w-full p-2 rounded text-black">
+    <input type="text" id="emoji" placeholder="Emoji" class="w-full p-2 rounded text-black">
+    <input type="text" id="iframe" placeholder="Iframe link" class="w-full p-2 rounded text-black">
+    <button type="submit" class="px-4 py-2 bg-sky-500 rounded">➕ Pridať hru</button>
+  </form>
+
+  <h2 class="text-xl mt-6 mb-2">📋 Zoznam hier</h2>
+  <ul id="gameList" class="space-y-2"></ul>
+</body>
+</html>
