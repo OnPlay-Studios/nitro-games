@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin Panel – UniLand</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+    // Firebase config
     const firebaseConfig = {
       apiKey: "AIzaSyD391ahoLbdhCEMzc73uTYz4rLl7aRuuHY",
       authDomain: "unicord-e7296.firebaseapp.com",
@@ -17,25 +20,64 @@
       measurementId: "G-KDS54SZF0Y"
     };
 
+    // Init Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const db = getFirestore(app);
 
+    // Kontrola loginu
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         window.location.href = "login.html";
+      } else {
+        document.getElementById("user").textContent = user.email;
       }
     });
 
+    // Logout
     window.logout = function() {
       signOut(auth).then(() => {
         window.location.href = "login.html";
       });
     }
+
+    // Pridanie hry
+    window.addGame = async function() {
+      const title = document.getElementById("title").value;
+      const description = document.getElementById("description").value;
+      const emoji = document.getElementById("emoji").value;
+      const iframe = document.getElementById("iframe").value;
+
+      try {
+        await addDoc(collection(db, "games"), {
+          title,
+          description,
+          emoji,
+          iframe
+        });
+        alert("Hra bola pridaná ✅");
+        document.getElementById("gameForm").reset();
+      } catch (e) {
+        alert("Chyba: " + e.message);
+      }
+    }
   </script>
 </head>
-<body>
-  <h1>🎮 Admin Panel</h1>
-  <p>Tu pridáš / spravuješ hry (sem môžeme doplniť LocalStorage alebo JSON systém).</p>
-  <button onclick="logout()">Odhlásiť</button>
+<body class="bg-black text-white min-h-screen flex items-center justify-center">
+  <div class="bg-gray-900 p-8 rounded-2xl shadow-lg w-[32rem]">
+    <h1 class="text-3xl font-bold mb-4">🎮 Admin Panel</h1>
+    <p class="mb-6">Prihlásený ako: <span id="user" class="text-purple-400">Načítavam…</span></p>
+
+    <form id="gameForm" class="space-y-3">
+      <input id="title" type="text" placeholder="Názov hry" class="w-full p-2 rounded bg-gray-800 text-white">
+      <input id="description" type="text" placeholder="Popis hry" class="w-full p-2 rounded bg-gray-800 text-white">
+      <input id="emoji" type="text" placeholder="Emoji 🎮" class="w-full p-2 rounded bg-gray-800 text-white">
+      <input id="iframe" type="text" placeholder="Iframe URL" class="w-full p-2 rounded bg-gray-800 text-white">
+      <button type="button" onclick="addGame()" class="w-full bg-blue-600 hover:bg-blue-700 p-2 rounded">Pridať hru</button>
+    </form>
+
+    <button onclick="logout()" class="w-full mt-6 bg-red-600 hover:bg-red-700 p-2 rounded">Odhlásiť</button>
+  </div>
 </body>
 </html>
+
