@@ -1,11 +1,37 @@
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="sk" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <title>Registrácia – UniLand</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register — UniLand</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 flex items-center justify-center h-screen">
+
+  <div class="glass rounded-3xl p-8 sm:p-12 shadow-soft w-full max-w-md">
+    <h1 class="text-3xl font-extrabold text-center mb-6">Registrácia do UniLand</h1>
+
+    <form id="registerForm" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium">Email</label>
+        <input type="email" id="email" required class="mt-1 w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900/60 p-2 focus:ring-sky-500 focus:border-sky-500">
+      </div>
+      <div>
+        <label class="block text-sm font-medium">Heslo</label>
+        <input type="password" id="password" required class="mt-1 w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900/60 p-2 focus:ring-sky-500 focus:border-sky-500">
+      </div>
+      <button type="submit" class="w-full rounded-xl px-4 py-2 text-white bg-sky-500 hover:bg-sky-600 font-semibold shadow-soft">Registrovať sa</button>
+    </form>
+
+    <p class="mt-4 text-center text-sm text-slate-500 dark:text-slate-400">
+      Už máš účet? <a href="/login.html" class="text-sky-600 dark:text-sky-400 font-semibold hover:underline">Prihlásiť sa</a>
+    </p>
+  </div>
+
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyD391ahoLbdhCEMzc73uTYz4rLl7aRuuHY",
@@ -18,26 +44,22 @@
     };
 
     const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+    const auth = getAuth();
 
-    window.register = function() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          alert("Úspešná registrácia! Teraz sa môžeš prihlásiť.");
-          window.location.href = "login.html";
-        })
-        .catch(err => alert("Chyba: " + err.message));
-    }
+    const registerForm = document.getElementById('registerForm');
+    registerForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert("Registrácia úspešná! Prihlás sa.");
+        window.location.href = "/login.html";
+      } catch (error) {
+        alert(error.message);
+      }
+    });
   </script>
-</head>
-<body>
-  <h1>Registrácia</h1>
-  <input id="email" type="email" placeholder="Email"><br>
-  <input id="password" type="password" placeholder="Heslo"><br>
-  <button onclick="register()">Registrovať</button>
-  <p>Máš účet? <a href="login.html">Prihlás sa</a></p>
 </body>
 </html>
-
