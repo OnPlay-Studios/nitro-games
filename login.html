@@ -2,40 +2,45 @@
 <html lang="sk">
 <head>
   <meta charset="UTF-8">
-  <title>Prihlásenie – UniLand</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prihlásiť sa — UniLand</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 flex items-center justify-center h-screen">
+  <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-lg w-96">
+    <h2 class="text-2xl font-bold mb-6 text-center text-slate-900 dark:text-slate-100">Prihlásiť sa</h2>
+    <input type="email" id="email" placeholder="Email" class="w-full p-3 mb-4 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900/60">
+    <input type="password" id="password" placeholder="Heslo" class="w-full p-3 mb-4 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900/60">
+    <button id="loginBtn" class="w-full bg-sky-500 hover:bg-sky-600 text-white p-3 rounded-xl font-semibold">Prihlásiť sa</button>
+    <p class="mt-4 text-sm text-center text-slate-500 dark:text-slate-400">Nemáš účet? <a href="/register.html" class="text-sky-500 hover:underline">Registrovať sa</a></p>
+  </div>
+
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 
     const firebaseConfig = {
-      apiKey: "AIzaSyD391ahoLbdhCEMzc73uTYz4rLl7aRuuHY",
-      authDomain: "unicord-e7296.firebaseapp.com",
-      projectId: "unicord-e7296",
-      storageBucket: "unicord-e7296.firebasestorage.app",
-      messagingSenderId: "150017945888",
-      appId: "1:150017945888:web:4929627b3c5bbdb1606745",
-      measurementId: "G-KDS54SZF0Y"
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
     };
 
     const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+    const auth = getAuth();
 
-    window.login = function() {
+    document.getElementById("loginBtn").addEventListener("click", async () => {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          window.location.href = "dashboard.html";
-        })
-        .catch(err => alert("Chyba: " + err.message));
-    }
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        window.location.href = "/dashboard.html";
+      } catch(e){
+        alert(e.message);
+      }
+    });
   </script>
-</head>
-<body>
-  <h1>Prihlásenie</h1>
-  <input id="email" type="email" placeholder="Email"><br>
-  <input id="password" type="password" placeholder="Heslo"><br>
-  <button onclick="login()">Prihlásiť</button>
-  <p>Nemáš účet? <a href="register.html">Registrovať</a></p>
 </body>
 </html>
