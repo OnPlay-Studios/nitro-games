@@ -1,131 +1,121 @@
 <!DOCTYPE html>
-<html lang="sk" class="scroll-smooth">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>UniLand — Minihry a Herné Novinky</title>
-  <meta name="description" content="Vitaj na UniLand.fun — stránke plnej minihier a herných noviniek. Zahraj si Minecraft 1.8.8, Subway Surfers, 1v1.LOL, LEGO a sleduj novinky." />
-  <meta name="theme-color" content="#0ea5e9" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ["Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Cantarell", "Helvetica Neue", "Arial", "sans-serif"] },
-          boxShadow: { soft: "0 10px 30px rgba(2, 6, 23, 0.15)" },
-          backgroundImage: { hero: "radial-gradient(1000px 400px at 50% -10%, rgba(59,130,246,0.25), rgba(59,130,246,0) 60%), radial-gradient(700px 300px at 90% 10%, rgba(14,165,233,0.25), rgba(14,165,233,0) 60%), radial-gradient(800px 400px at 10% 10%, rgba(99,102,241,0.25), rgba(99,102,241,0) 60%)" }
-        }
-      },
-      darkMode: 'class'
-    }
-  </script>
-  <style>
-    .glass { backdrop-filter: blur(12px); background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.5)); }
-    .dark .glass { background: linear-gradient(180deg, rgba(2,6,23,.55), rgba(2,6,23,.45)); }
-  </style>
-</head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
-
-  <!-- Header -->
-  <header class="sticky top-0 z-50 border-b border-slate-200/60 dark:border-slate-700/60 bg-white/70 dark:bg-slate-900/70 backdrop-blur">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-sky-400 to-indigo-500 grid place-content-center shadow-soft">
-          <span class="text-white text-lg font-extrabold">U</span>
-        </div>
-        <div>
-          <div class="text-lg font-extrabold leading-5">UniLand</div>
-          <div class="text-[11px] uppercase tracking-wider text-slate-500 dark:text-slate-400">Minihry</div>
-        </div>
-      </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-        <a href="#hry" class="hover:text-sky-600 dark:hover:text-sky-400">Hry</a>
-        <a href="#novinky" class="hover:text-sky-600 dark:hover:text-sky-400">Herné novinky</a>
-        <a href="#faq" class="hover:text-sky-600 dark:hover:text-sky-400">FAQ</a>
-        <a href="#kontakt" class="hover:text-sky-600 dark:hover:text-sky-400">Kontakt</a>
-      </nav>
-      <div class="flex items-center gap-2">
-        <button id="themeToggle" aria-label="Prepni tému" class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
-          <svg id="sun" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v2m0 14v2M5.64 5.64l1.41 1.41M16.95 16.95l1.41 1.41M3 12h2m14 0h2M5.64 18.36l1.41-1.41M16.95 7.05l1.41-1.41"/><circle cx="12" cy="12" r="4"/></svg>
-          <svg id="moon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-        <a id="loginBtn" href="/login.html" class="hidden sm:inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold bg-sky-500 hover:bg-sky-600 text-white shadow-soft">Prihlásiť sa</a>
-        <a id="dashboardBtn" href="/dashboard.html" class="hidden sm:inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold bg-indigo-500 hover:bg-indigo-600 text-white shadow-soft">Dashboard</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="bg-hero">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-      <div class="glass rounded-3xl p-8 sm:p-12 shadow-soft">
-        <div class="grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
-              Vitaj na stránke plnej <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-indigo-500">minihier</span>!
-            </h1>
-            <p class="mt-4 text-slate-600 dark:text-slate-300 text-lg">Vyber si jednu z hier nižšie a začni sa baviť. Všetko beží priamo v prehliadači.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-12">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400">
-        <div>© <span id="year"></span> Empega Studios. Všetky práva vyhradené.</div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Firebase -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyD391ahoLbdhCEMzc73uTYz4rLl7aRuuHY",
-      authDomain: "unicord-e7296.firebaseapp.com",
-      projectId: "unicord-e7296",
-      storageBucket: "unicord-e7296.firebasestorage.app",
-      messagingSenderId: "150017945888",
-      appId: "1:150017945888:web:4929627b3c5bbdb1606745",
-      measurementId: "G-KDS54SZF0Y"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth();
-
-    const loginBtn = document.getElementById('loginBtn');
-    const dashboardBtn = document.getElementById('dashboardBtn');
-
-    onAuthStateChanged(auth, user => {
-      if (user) {
-        loginBtn.classList.add('hidden');
-        dashboardBtn.classList.remove('hidden');
-      } else {
-        loginBtn.classList.remove('hidden');
-        dashboardBtn.classList.add('hidden');
+<html lang="sk" class="scroll-smooth dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UniLand – Minihry</title>
+    <meta name="description" content="Najlepšie online minihry na jednom mieste!" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: { extend: { fontFamily: { sans: ["Inter","system-ui"] }, boxShadow: { soft: "0 10px 30px rgba(2,6,23,.15)" } } },
+        darkMode: 'class'
       }
-    });
-  </script>
+    </script>
+  </head>
+  <body class="bg-slate-900 text-slate-100">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 border-b border-slate-700/60 bg-slate-900/70 backdrop-blur">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-sky-400 to-indigo-500 grid place-content-center shadow-soft">
+            <span class="text-white text-lg font-extrabold">U</span>
+          </div>
+          <div>
+            <div class="text-lg font-extrabold leading-5">UniLand</div>
+            <div class="text-[11px] uppercase tracking-wider text-slate-400">Minihry</div>
+          </div>
+        </a>
+        <div id="authButtons">
+          <a href="login.html" class="rounded-xl px-3 py-2 text-sm font-semibold bg-sky-500 hover:bg-sky-600 text-white shadow-soft">Prihlásiť</a>
+        </div>
+      </div>
+    </header>
 
-  <!-- Theme & Footer -->
-  <script>
-    const themeToggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
-    const stored = localStorage.getItem('uniland-theme');
-    if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) html.classList.add('dark');
-    themeToggle.addEventListener('click', () => {
-      html.classList.toggle('dark');
-      localStorage.setItem('uniland-theme', html.classList.contains('dark') ? 'dark' : 'light');
-    });
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
+    <!-- Hero -->
+    <section class="text-center py-20">
+      <h1 class="text-4xl font-extrabold sm:text-5xl">🎮 Vitaj na stránke plnej minihier!</h1>
+      <p class="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">
+        Zahraj si najlepšie online minihry priamo vo svojom prehliadači.
+      </p>
+    </section>
+
+    <!-- Hry Grid -->
+    <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-2xl font-bold mb-6">Naše hry</h2>
+      <div id="gamesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Tu sa dynamicky načítajú hry -->
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-400">
+        © <span id="year"></span> UniLand. Všetky práva vyhradené.
+      </div>
+    </footer>
+
+    <!-- Firebase -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+      import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD391ahoLbdhCEMzc73uTYz4rLl7aRuuHY",
+        authDomain: "unicord-e7296.firebaseapp.com",
+        projectId: "unicord-e7296",
+        storageBucket: "unicord-e7296.appspot.com",
+        messagingSenderId: "150017945888",
+        appId: "1:150017945888:web:4929627b3c5bbdb1606745",
+        measurementId: "G-KDS54SZF0Y"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const db = getFirestore(app);
+
+      // 🟢 Dynamické hry z Firestore
+      async function loadGames() {
+        const querySnapshot = await getDocs(collection(db, "games"));
+        const grid = document.getElementById("gamesGrid");
+        grid.innerHTML = "";
+        querySnapshot.forEach((doc) => {
+          const game = doc.data();
+          const card = document.createElement("div");
+          card.className = "glass rounded-2xl p-6 shadow-soft flex flex-col items-center text-center";
+          card.innerHTML = `
+            <div class="text-4xl">${game.emoji}</div>
+            <h3 class="mt-3 text-xl font-bold">${game.title}</h3>
+            <p class="mt-2 text-slate-300">${game.description}</p>
+            <a href="game.html?title=${encodeURIComponent(game.title)}&description=${encodeURIComponent(game.description)}&emoji=${encodeURIComponent(game.emoji)}&iframe=${encodeURIComponent(game.iframe)}" 
+              class="mt-4 rounded-xl px-4 py-2.5 text-sm font-semibold bg-sky-500 hover:bg-sky-600 text-white shadow-soft">
+              Hrať
+            </a>
+          `;
+          grid.appendChild(card);
+        });
+      }
+      loadGames();
+
+      // 🟢 Login/Logout stav
+      onAuthStateChanged(auth, (user) => {
+        const authButtons = document.getElementById("authButtons");
+        if (user) {
+          authButtons.innerHTML = `
+            <span class="mr-3 text-slate-300">👋 ${user.email}</span>
+            <button id="logoutBtn" class="rounded-xl px-3 py-2 text-sm font-semibold border border-slate-700 hover:bg-slate-800">Odhlásiť</button>
+          `;
+          document.getElementById("logoutBtn").onclick = () => signOut(auth);
+        } else {
+          authButtons.innerHTML = `<a href="login.html" class="rounded-xl px-3 py-2 text-sm font-semibold bg-sky-500 hover:bg-sky-600 text-white shadow-soft">Prihlásiť</a>`;
+        }
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>
